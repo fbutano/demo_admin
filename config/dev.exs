@@ -69,7 +69,7 @@ config :demo_admin, DemoAdminWeb.Endpoint,
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :demo_admin, dev_routes: true
+config :demo_admin, dev_routes: true, token_signing_secret: "Sgd8XuZBZmagnQrIa7gIoY9/8nGZbFNk"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :default_formatter, format: "[$level] $message\n"

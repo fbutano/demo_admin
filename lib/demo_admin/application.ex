@@ -15,7 +15,8 @@ defmodule DemoAdmin.Application do
       # Start a worker by calling: DemoAdmin.Worker.start_link(arg)
       # {DemoAdmin.Worker, arg},
       # Start to serve requests, typically the last entry
-      DemoAdminWeb.Endpoint
+      DemoAdminWeb.Endpoint,
+      {AshAuthentication.Supervisor, [otp_app: :demo_admin]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

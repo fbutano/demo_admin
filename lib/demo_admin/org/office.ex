@@ -1,10 +1,23 @@
 defmodule DemoAdmin.Org.Office do
-  use Ash.Resource, otp_app: :demo_admin, domain: DemoAdmin.Org, data_layer: AshPostgres.DataLayer,
-  extensions: [AshAdmin.Resource]
+  use Ash.Resource,
+    otp_app: :demo_admin,
+    domain: DemoAdmin.Org,
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshAdmin.Resource]
+
+  admin do
+    label_field :name
+    relationship_select_max_items 10
+  end
 
   postgres do
     table "offices"
     repo DemoAdmin.Repo
+  end
+
+  actions do
+    defaults [:read, :destroy, :create, :update]
+    default_accept [:name]
   end
 
   attributes do
@@ -16,16 +29,5 @@ defmodule DemoAdmin.Org.Office do
 
     create_timestamp :inserted_at
     update_timestamp :updated_at
-  end
-
-
-  actions do
-    defaults [:read, :destroy, :create, :update]
-    default_accept [:name]
-  end
-
-  admin do
-    label_field :name
-    relationship_select_max_items 10
   end
 end

@@ -1,4 +1,6 @@
 import Config
+config :demo_admin, token_signing_secret: "2HM1Ilv0+sGFHUksOoNtVHSVT8yQJp/U"
+config :bcrypt_elixir, log_rounds: 1
 config :ash, policies: [show_policy_breakdowns?: true], disable_async?: true
 
 # Configure your database

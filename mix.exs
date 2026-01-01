@@ -41,6 +41,8 @@ defmodule DemoAdmin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:simple_sat, "~> 0.1"},
+      {:ash_authentication, "~> 4.0"},
       {:sourceror, "~> 1.8", only: [:dev, :test]},
       {:live_debugger, "~> 0.5", only: [:dev]},
       {:ash_admin, "~> 0.13"},

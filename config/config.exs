@@ -25,6 +25,9 @@ config :spark,
     remove_parens?: true,
     "Ash.Resource": [
       section_order: [
+        :authentication,
+        :token,
+        :user_identity,
         :admin,
         :postgres,
         :resource,
@@ -51,7 +54,7 @@ config :spark,
 config :demo_admin,
   ecto_repos: [DemoAdmin.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [DemoAdmin.Org]
+  ash_domains: [DemoAdmin.Accounts, DemoAdmin.Org]
 
 # Configure the endpoint
 config :demo_admin, DemoAdminWeb.Endpoint,
