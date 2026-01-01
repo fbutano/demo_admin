@@ -50,7 +50,8 @@ config :spark,
 
 config :demo_admin,
   ecto_repos: [DemoAdmin.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_domains: [DemoAdmin.Org]
 
 # Configure the endpoint
 config :demo_admin, DemoAdminWeb.Endpoint,
