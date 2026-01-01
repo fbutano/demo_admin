@@ -30,4 +30,13 @@ defmodule DemoAdmin.Org.Office do
     create_timestamp :inserted_at
     update_timestamp :updated_at
   end
+
+  relationships do
+    has_many :membership_relationships, DemoAdmin.Accounts.Membership
+    many_to_many :members, DemoAdmin.Accounts.User do
+      join_relationship :membership_relationships
+      destination_attribute_on_join_resource :user_id
+    end
+  end
+
 end

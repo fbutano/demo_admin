@@ -56,4 +56,12 @@ defmodule DemoAdmin.Accounts.User do
       allow_nil? false
     end
   end
+
+  relationships do
+    has_many :membership_relationships, DemoAdmin.Accounts.Membership
+    many_to_many :enabled_offices, DemoAdmin.Org.Office do
+      join_relationship :membership_relationships
+      destination_attribute_on_join_resource :office_id
+    end
+  end
 end

@@ -10,5 +10,6 @@ defmodule DemoAdmin.Accounts do
   resources do
     resource DemoAdmin.Accounts.Token
     resource DemoAdmin.Accounts.User
+    resource DemoAdmin.Accounts.Membership
   end
 end
