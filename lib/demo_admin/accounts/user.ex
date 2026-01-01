@@ -4,7 +4,7 @@ defmodule DemoAdmin.Accounts.User do
     domain: DemoAdmin.Accounts,
     data_layer: AshPostgres.DataLayer,
     authorizers: [Ash.Policy.Authorizer],
-    extensions: [AshAuthentication]
+    extensions: [AshAuthentication, AshAdmin.Resource]
 
   authentication do
     add_ons do
@@ -28,8 +28,21 @@ defmodule DemoAdmin.Accounts.User do
   end
 
   actions do
-    defaults [:read, :update, :create, :destroy]
-    default_accept [:pin, :name]
+    defaults [:read, :destroy]
+    defaults [:read, :destroy]
+
+    create :create do
+      accept [:pin, :name]
+      argument :enabled_offices, {:array, :map}, allow_nil?: true, default: []
+      change manage_relationship(:enabled_offices, type: :append_and_remove)
+    end
+
+    update :update do
+      accept [:pin, :name]
+      require_atomic? false
+      argument :enabled_offices, {:array, :map}, allow_nil?: true, default: []
+      change manage_relationship(:enabled_offices, type: :append_and_remove)
+    end
 
     read :get_by_subject do
       description "Get a user by the subject claim in a JWT"

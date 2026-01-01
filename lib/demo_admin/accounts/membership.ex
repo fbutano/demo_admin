@@ -15,16 +15,15 @@ defmodule DemoAdmin.Accounts.Membership do
   end
 
   actions do
-    defaults [:read]
+    defaults [:read, :create, :update, :destroy]
   end
 
   policies do
-    policy access_type(:read) do
+    policy action_type(:read) do
       authorize_if always()
     end
+
   end
-
-
 
   relationships do
     belongs_to :user, DemoAdmin.Accounts.User do
